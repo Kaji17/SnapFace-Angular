@@ -1,1 +1,14 @@
-<p>Hello World! </p>
+<div class="face-snap-card">
+    <h2>{{ FaceSnaps.title }}</h2>
+
+    <p>Mise en ligne : {{ FaceSnaps.createdDate}}</p>
+
+    <img [src]="FaceSnaps.imageUrl" [alt]="FaceSnaps.title" >
+
+    <p> {{FaceSnaps.description}} </p>
+
+    <p> 
+        <button (click)="onClicksnaps()">{{btnTxt}}</button>
+        {{FaceSnaps.snaps}} 
+    </p>
+</div>
