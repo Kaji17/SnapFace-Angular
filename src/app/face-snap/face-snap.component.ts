@@ -1,26 +1,38 @@
-import { Component, OnInit} from '@angular/core';
+import { STRING_TYPE } from '@angular/compiler';
+import { Component, OnInit, Input } from '@angular/core';
+import { FaceSnaps } from '../Model/FaceSnaps.model';
 
 @Component({
   selector: 'app-face-snap',
   templateUrl: './face-snap.component.html',
   styleUrls: ['./face-snap.component.scss']
 })
-export class FaceSnapComponent implements OnInit{
-  title!: String;
-  description!: String;
-  createdDate!: Date;
-  snaps!: Number;
+export class FaceSnapComponent implements OnInit {
+  @Input() FaceSnaps!: FaceSnaps;
+  snaped!:boolean;
+  btnTxt!: string
 
-  ngOnInit(){
-    this.title = "Berenger";
-    this.description = "best friend";
-    this.createdDate = new Date;
-    this.snaps = 6;
+  ngOnInit() {
+    this.snaped= false;
+    this.btnTxt= "Ohh snaps"
   }
+  onClicksnaps(){
+    if (this.snaped== false) {
+      this.FaceSnaps.snaps = 1+this.FaceSnaps.snaps;
+      this.snaped = true;
+      this.btnTxt= "Ooops, unsnaps"
+    }else{
+      this.FaceSnaps.snaps = this.FaceSnaps.snaps-1;
+      this.snaped =false;
+      this.btnTxt= "Ohh snaps"
+    }
+  }
+
+
 
 }
 // fonction permettant d'écrire la date dans un format JJ MM YY
-function dateCustom(date: Date): String {
+function dateCustom(date: Date): string {
   var result: string = "not defined";
   var day: number = new Date().getDate();
   var monthNumb: number = new Date().getMonth();
