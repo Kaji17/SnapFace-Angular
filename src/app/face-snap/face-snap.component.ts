@@ -8,23 +8,42 @@ import { FaceSnaps } from '../Model/FaceSnaps.model';
   styleUrls: ['./face-snap.component.scss']
 })
 export class FaceSnapComponent implements OnInit {
+  //Decorateur permettant d'importer les attribut de la class FaceSnaps
   @Input() FaceSnaps!: FaceSnaps;
   snaped!:boolean;
-  btnTxt!: string
+  btnTxt!: string;
+  dbsnaped!: boolean;
+  
 
   ngOnInit() {
     this.snaped= false;
-    this.btnTxt= "Ohh snaps"
+    this.dbsnaped= false;
+    this.btnTxt= "Ohh snaps";
+    
   }
+
+  //cette fonction permet d'ajouter ou retirer un snap un utilisateur à droit à un snap
   onClicksnaps(){
     if (this.snaped== false) {
+      //this.FaceSnaps.snaps utilisation de l'attribut de la class FaceSnaps du Model
       this.FaceSnaps.snaps = 1+this.FaceSnaps.snaps;
       this.snaped = true;
       this.btnTxt= "Ooops, unsnaps"
     }else{
       this.FaceSnaps.snaps = this.FaceSnaps.snaps-1;
       this.snaped =false;
-      this.btnTxt= "Ohh snaps"
+      this.btnTxt= "Ohh snaps";
+      this.dbsnaped = true;
+    }
+  }
+
+  //cette fonction permet lorsqu'on doublick sur l'image d'ajouter de snap 
+  onAddsnaps(){
+    if (this.snaped== false || this.dbsnaped== false) {
+      this.FaceSnaps.snaps = 1+this.FaceSnaps.snaps;
+      this.snaped = true;
+      this.dbsnaped = true;
+      this.btnTxt= "Ooops, unsnaps"
     }
   }
 
