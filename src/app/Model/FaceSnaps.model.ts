@@ -1,4 +1,5 @@
 export class FaceSnaps{
+    id!: number;
     title!: string;
     description!: string;
     createdDate!: Date;
