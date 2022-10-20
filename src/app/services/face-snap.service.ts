@@ -8,6 +8,7 @@ export class FaceSnapService{
     
     faceSnapTab: FaceSnaps[] = [
         {
+          id: 1,
           title: "Leandre",
           description: "Mon Pétit frère tjr frais",
           createdDate: new Date(),
@@ -17,6 +18,7 @@ export class FaceSnapService{
         },
   
         {
+          id: 2,
           title: "Tamegnon",
           description: "Benzema you're the GOAT",
           createdDate: new Date(),
@@ -26,6 +28,7 @@ export class FaceSnapService{
         },
   
         {
+          id: 3,
           title: "Leandre",
           description: "Mon Pétit frère tjr frais",
           createdDate: new Date(),
@@ -35,6 +38,7 @@ export class FaceSnapService{
         },
   
         {
+          id: 4,
           title: "Ninho Officiel",
           description: "Certifié Diamond",
           createdDate: new Date(),
@@ -43,6 +47,7 @@ export class FaceSnapService{
         },
   
         {
+          id: 5,
           title: "Leandre",
           description: "Mon Pétit frère tjr frais",
           createdDate: new Date(),
@@ -52,6 +57,7 @@ export class FaceSnapService{
         },
   
         {
+          id: 6,
           title: "Tamegnon",
           description: "Benzema you're the GOAT",
           createdDate: new Date(),
@@ -61,6 +67,7 @@ export class FaceSnapService{
         },
   
         {
+          id:7,
           title: "Leandre",
           description: "Mon Pétit frère tjr frais",
           createdDate: new Date(),
@@ -70,12 +77,29 @@ export class FaceSnapService{
         },
         
         {
+          id: 8,
           title: "Ninho Officiel",
           description: "Certifié Diamond",
           createdDate: new Date(),
           snaps: 300000,
           imageUrl: "https://th.bing.com/th/id/R.fdc7a41fa59622eb4b053ef8412b59b5?rik=bo3taLdvNqvLhg&pid=ImgRaw&r=0"
         }
-  
       ]
+      getAllFaceSnap(): FaceSnaps[]{
+        return this.faceSnapTab
+      }
+
+      getSnapId(facenapid: number): FaceSnaps{
+        const facesnap = this.faceSnapTab.find(faceSnapTab =>  faceSnapTab.id === facenapid)
+        if (!facesnap) {
+          throw new Error('Facesnap undefinied');
+        }else{
+          return facesnap
+        }
+      }
+      SnapById(facenapid: number, snapType: 'snaped' | 'unsnaped'): void{
+        const facesnap = this.getSnapId(facenapid);
+        snapType === 'snaped' ? facesnap.snaps++ : facesnap.snaps--
+
+      }
 }
