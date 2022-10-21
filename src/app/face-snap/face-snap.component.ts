@@ -1,5 +1,6 @@
 import { STRING_TYPE } from '@angular/compiler';
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { FaceSnaps } from '../Model/FaceSnaps.model';
 import { FaceSnapService } from '../services/face-snap.service';
 
@@ -15,7 +16,8 @@ export class FaceSnapComponent implements OnInit {
   btnTxt!: string;
   dbsnaped!: boolean;
   
-  constructor(private facesnapservice: FaceSnapService){}
+  constructor(private facesnapservice: FaceSnapService,
+              private router: Router){}
 
   ngOnInit() {
     this.snaped= 'unsnaped';
@@ -48,6 +50,9 @@ export class FaceSnapComponent implements OnInit {
       this.btnTxt= "Ooops, unsnaps"
     }
   }
+  onViewFaceSnap() {
+    this.router.navigateByUrl(`facesnaps/${this.FaceSnaps.id}`);
+}
 
 
 

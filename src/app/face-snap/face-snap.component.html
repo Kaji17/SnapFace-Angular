@@ -1,12 +1,7 @@
 <div class="face-snap-card" [ngClass]="{snapped: btnTxt=== 'Ooops, unsnaps'}">
     <h2>{{ FaceSnaps.title | titlecase}}</h2>
-    <p>Mise en ligne : {{ FaceSnaps.createdDate | date: 'le dd/MM/YY à HH:MM'}}</p>
-    <img [src]="FaceSnaps.imageUrl" [alt]="FaceSnaps.title" (dblclick)="onAddsnaps()">
     <p> {{FaceSnaps.description}} </p>
-    <p *ngIf="FaceSnaps.location">Photo prise à: <strong>{{FaceSnaps.location}}</strong></p>
     <p>
-        <button (click)="onClicksnaps()">{{btnTxt}}</button>
-        ❤️
-        {{FaceSnaps.snaps}}
+        <button (click)="onViewFaceSnap()">VIEW</button>
     </p>
 </div>
