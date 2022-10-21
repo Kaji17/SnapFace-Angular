@@ -11,5 +11,8 @@ export class LandingPageComponentComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  onContinue(): void{
+    this.router.navigateByUrl("facesnaps");
+  }
 
 }
